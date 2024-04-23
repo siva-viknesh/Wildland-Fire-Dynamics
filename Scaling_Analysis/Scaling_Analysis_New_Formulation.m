@@ -1,3 +1,8 @@
+% ***************** SCALING ANALYSIS OF ASENIO COMBUSTION MODEL - NEW FORMULATION ************************************ %
+% Author  : SIVA VIKNESH
+% Email   : siva.viknesh@sci.utah.edu / sivaviknesh14@gmail.com
+% Address : SCI INSTITUTE, UNIVERSITY OF UTAH, SALT LAKE CITY, UTAH, USA
+% ******************************************************************************************************************** %
 clear all;
 clc
 % PARAMETERS OF WILDFIRE PDE EQUATION
