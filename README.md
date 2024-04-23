@@ -1,1 +1,1 @@
-![Model](https://github.com/siva-viknesh/Wild_Fire_Dynamics/blob/main/Post_Processing/Figure.png)
+![Model](https://github.com/siva-viknesh/Wildland_Fire_Dynamics/blob/main/Scaling_Analysis/Scaling_Analysis_Param.jpeg)
