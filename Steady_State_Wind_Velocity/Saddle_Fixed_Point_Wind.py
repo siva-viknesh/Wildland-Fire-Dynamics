@@ -106,16 +106,10 @@ def SADDLE_POINT_VELOCITY (xmin, xmax, ymin, ymax, Nx, Ny):
 
 	X, Y = np.meshgrid(x, y)
  
-	Vx = 4.0*Y*np.cos(75* np.pi/180)
-	Vy = 1.0*X*np.sin(75* np.pi/180)
-
-	rot = 90
-	v = Vy*np.cos(rot* np.pi/180) - Vx*np.sin(rot* np.pi/180)
-	u = Vy*np.sin(rot* np.pi/180) + Vx*np.cos(rot* np.pi/180)
-
-	Vmag = np.sqrt(np.max(u) + np.max (v))
+	v = -Y
+	u =  X	
 	
-	return u/Vmag, v/Vmag
+	return u, v
 
 
 # ---------------------------------- BOUNDARY CONDITION OF TEMPERATURE & FUEL ---------------------------------------- #
