@@ -1,7 +1,6 @@
 # ************************ WILD FIRE SOLVER - 2D UNSTEADY PDE SOLVER - POST PROCESS  ********************************* #
-# Author  : SIVA VIKNESH
-# Email   : siva.viknesh@sci.utah.edu / sivaviknesh14@gmail.com
-# Address : SCI INSTITUTE, UNIVERSITY OF UTAH, SALT LAKE CITY, UTAH, USA
+#   Author  : SIVA VIKNESH S.,
+#   Address : SCI INSTITUTE, UNIVERSITY OF UTAH, SALT LAKE CITY, UTAH, USA
 # ******************************************************************************************************************** #
 import os
 import numpy as np
@@ -13,23 +12,22 @@ import matplotlib.cm as cm
 import matplotlib.animation as animation
 from scipy.linalg import circulant, toeplitz, inv
 import h5py
-
 # -------------------------------------------------------------------------------------------------------------------- #
 
 print ("*"*85)
 print ("\n WILD FIRE SIMULATION DATA ARE EXTRACT TO DECIPHER THE DYNAMICS......... \n")
 
-xmin  = -2.0
+xmin  =  0.0
 xmax  =  2.0
 Nx    =  256
 dx    = (xmax - xmin) / Nx
 
-ymin  = -2.0
-ymax  =  2.0                                          
-Ny    =  256
+ymin  =  0.0
+ymax  =  1.0                                          
+Ny    =  128
 dy    = (ymax - ymin) / Ny
 
-dt    = 1e-7                                               # TIME STEP
+dt    = 1e-8                                               # TIME STEP
 Nt    = int(5.0/dt)                                        # NO. OF TIME STEPS
 NIT   = 1e4                                               # TIME INTERVAL FOR SVAING THE DATA
 Nskip = 1
@@ -45,7 +43,7 @@ for file in os.listdir(os.getcwd() + '/'):
     if file.endswith('.h5'):
         data_file.append(file)
 
-Nfiles   = 70#len(data_file) -1                                # NO. OF FILES TO READ
+Nfiles   = len(data_file) -1                                # NO. OF FILES TO READ
 
 print ("NO. OF DATA FILES =", Nfiles)
 Nfiles   = int(Nfiles /Nskip)
@@ -90,19 +88,60 @@ bottom_front   = np.array(bottom_front)
 data = np.vstack((time, fuel_burn_rate , right_front, left_front, top_front, bottom_front))
 
 np.savetxt("flame_location.dat", np.transpose(data), fmt = '%10.6f')
-
-fig = plt.figure()
-ax = plt.axes()
+plt.close('all')
+plt.subplot(2, 2, 1)
 plt.plot(time, np.array(right_front),  '-o', label ='Right front')
-#plt.plot(time, np.array(left_front), '-o', label ='Left front')
-#plt.gca().invert_xaxis()
+plt.xlabel('t') 
+plt.ylabel('x') 
 plt.grid()
-plt.xlabel("Time")
-plt.ylabel("Flame Front location - X")
 plt.legend()
+
+
+plt.subplot(2, 2, 2)
+plt.plot(time, np.array(left_front), '-o', label ='Left front')
+plt.xlabel('t') 
+plt.ylabel('x') 
+plt.grid()
+plt.legend()
+
+plt.subplot(2, 2, 3)
+plt.plot(time, np.array(top_front), '-o', label ='Top front')
+plt.xlabel('t') 
+plt.ylabel('y') 
+plt.grid()
+plt.legend()
+
+
+plt.subplot(2, 2, 4)
+plt.plot(time, np.array(bottom_front), '-o', label ='Bottom front')
+plt.xlabel('t') 
+plt.ylabel('y') 
+plt.grid()
+plt.legend()
+
+plt.tight_layout()
+
 plt.savefig("fig.png")
-    
+
+tolerance = 1
+
+vel_right   = np.diff (right_front)  / (dt*NIT)
+vel_left    = np.abs(np.diff (left_front))   / (dt*NIT)
+vel_top     = np.diff (top_front)    / (dt*NIT)
+vel_bottom  = np.abs(np.diff (bottom_front)) / (dt*NIT)
 
 
+vel_right_mean = np.mean(vel_right [vel_right >= tolerance])
+time_right     = np.size((vel_right [vel_right >= tolerance]))* (dt*NIT)
 
+vel_left_mean = np.mean(vel_left  [vel_left >= tolerance])
+time_left     = np.size((vel_left [vel_left >= tolerance]))* (dt*NIT)
 
+vel_top_mean = np.mean(vel_top  [vel_top >= tolerance])
+time_top     = np.size((vel_top [vel_top >= tolerance]))* (dt*NIT)
+
+vel_bot_mean = np.mean(vel_bottom  [vel_bottom >= tolerance])
+time_bot     = np.size((vel_bottom [vel_bottom >= tolerance]))* (dt*NIT)
+
+print(time_right, time_left, time_top, time_bot)
+print(vel_right_mean, vel_left_mean, vel_top_mean, vel_bot_mean)
