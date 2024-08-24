@@ -786,9 +786,9 @@ ymax =  1.0
 Ny   =  128
 dy   = (ymax - ymin) / Ny
 
-dt   = 5e-8                                               	# TIME STEP
-Nt   = int(1e5)                                  	              # NO. OF TIME STEPS
-NIT  = 5e3			                                      			# TIME INTERVAL FOR SVAING THE DATA
+dt   = 1e-8                                                   # TIME STEP
+Nt   = int(1e5)                                  	      # NO. OF TIME STEPS
+NIT  = 1e4	                                  	      # TIME INTERVAL FOR SAVING THE DATA
 
 """ ****************************************** RESTART DATA FILES ************************************************** """
 
@@ -799,15 +799,15 @@ NRestart = 15000
 
 # NON DIMENSIONAL PARAMTERS OF THE PDE
 Da     = 1e3	          						 												 # DAMKOHLER NUMBER
-PHI    = 0.005					   						     										 # RATIO OF Da TO PECLET NUMBER (0.01 worked for clad = 2.0, da = 1e3)
+PHI    = 0.001					   						     										 # RATIO OF Da TO PECLET NUMBER (0.01 worked for clad = 2.0, da = 1e3)
 eps    = 3e-2                                                # INVERSE OF ACTIVATION ENERGY
 Q      = 1.00                                                # NON-DIMENSIONAL REACTION HEAT
-alpha  = 1e-3                                                # NON-DIMENSIONAL NATURAL CONVECTION COEFFICENT
+alpha  = 1e-3                                                # NON-DIMENSIONAL NATURAL CONVECTION COEFFICIENT
 kap    = 1e-1                                                # DIFFUSION PARAMETER
 Upc    = 3.0                                                 # NON-DIMENSIONAL PHASE CHANGE TEMPERATURE
 UFlame = 31.0                                                # NON-DIMENSIONAL TEMPERATURE AT FLAME SOURCE
 
-CLAD   = 6.20 											 											   # LOCALIZED ARTIFICIAL DIFFUSION COEFFCIENT
+CLAD   = 0.750 											 											   # LOCALIZED ARTIFICIAL DIFFUSION COEFFCIENT
 
 """ ************************************ FUEL DISTRIBUTION PARAMETERS ********************************************** """
 
@@ -849,7 +849,7 @@ else:
 	AoA     = 45.0
 	#Vx, Vy = FREESTREAM_VELOCITY (Nx, Ny, Vmag, AoA)             	# UNIFORM FLOW
 
-	f       = 1200.0                                             		# FREQUENCY OF FREESTREAM (Hz) 
+	f       = 200.0                                             		# FREQUENCY OF FREESTREAM (Hz) 
 	w       = 2.0* np.pi*f                                      		# FREQUENCY OF FREESTREAM (rad/sec)
 	epsilon = 0.250                                            			  # PERTURBATION (eps = 0.0 ->  STEADY FLOW)
 	t       = 0.0                                               		# OSCILLATION TIME 
