@@ -798,8 +798,8 @@ NRestart = 15000
 """ ***************************************** PDE SOLVER PARAMETERS ************************************************ """
 
 # NON DIMENSIONAL PARAMTERS OF THE PDE
-Da     = 1e3	          						 												 # DAMKOHLER NUMBER
-PHI    = 0.001					   						     										 # RATIO OF Da TO PECLET NUMBER (0.01 worked for clad = 2.0, da = 1e3)
+Da     = 1e3	          				     # DAMKOHLER NUMBER
+PHI    = 0.001					             # RATIO OF Da TO PECLET NUMBER
 eps    = 3e-2                                                # INVERSE OF ACTIVATION ENERGY
 Q      = 1.00                                                # NON-DIMENSIONAL REACTION HEAT
 alpha  = 1e-3                                                # NON-DIMENSIONAL NATURAL CONVECTION COEFFICIENT
@@ -807,7 +807,7 @@ kap    = 1e-1                                                # DIFFUSION PARAMET
 Upc    = 3.0                                                 # NON-DIMENSIONAL PHASE CHANGE TEMPERATURE
 UFlame = 31.0                                                # NON-DIMENSIONAL TEMPERATURE AT FLAME SOURCE
 
-CLAD   = 0.750 											 											   # LOCALIZED ARTIFICIAL DIFFUSION COEFFCIENT
+CLAD   = 0.750 						     # LOCALIZED ARTIFICIAL DIFFUSION COEFFCIENT
 
 """ ************************************ FUEL DISTRIBUTION PARAMETERS ********************************************** """
 
@@ -845,14 +845,14 @@ else:
 	U    = PATCH_FLAME_LOCATION (Nx, Ny, xmin, xmax, ymin, ymax, Xmin, Xmax, Ymin, Ymax, UFlame)
 
 	# WIND TOPOLOGY
-	Vmag    = 1.0                                           				# VELOCITY MAGNITUDE
+	Vmag    = 0.1                                                   # VELOCITY MAGNITUDE
 	AoA     = 45.0
 	#Vx, Vy = FREESTREAM_VELOCITY (Nx, Ny, Vmag, AoA)             	# UNIFORM FLOW
 
-	f       = 200.0                                             		# FREQUENCY OF FREESTREAM (Hz) 
-	w       = 2.0* np.pi*f                                      		# FREQUENCY OF FREESTREAM (rad/sec)
-	epsilon = 0.250                                            			  # PERTURBATION (eps = 0.0 ->  STEADY FLOW)
-	t       = 0.0                                               		# OSCILLATION TIME 
+	f       = 200.0                                             	# FREQUENCY OF FREESTREAM (Hz) 
+	w       = 2.0* np.pi*f                                      	# FREQUENCY OF FREESTREAM (rad/sec)
+	epsilon = 0.250                                            	# PERTURBATION (eps = 0.0 ->  STEADY FLOW)
+	t       = 0.0                                               	# OSCILLATION TIME 
 	Vx, Vy  = DOUBLE_GYRE_VELOCITY (Nx, Ny, t, w, Vmag, epsilon)    # DOUBLE GYRE FLOW
 
 	# SADDLE POINT VELOCITY FEILD
@@ -889,7 +889,7 @@ for i in range (Nt - NRestart):
 	print ("POSSIBLE MAX TEMP = ", Umax)
 	print ("AVERAGE FUEL      = ", np.mean (beta))
 
-	# WRITE THE TMPERATURE AND BETA DATA
+	# WRITE THE TEMPERATURE AND BETA DATA
 	if i % NIT == 0:
 		WRITE_DATA_H5PY (i + NRestart, beta, Vx, Vy, U)
 		print ("*"*65)
