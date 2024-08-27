@@ -782,7 +782,7 @@ dy   = (ymax - ymin) / Ny
 
 dt   = 1e-7                                               # TIME STEP
 Nt   = int(5.0/dt)                                        # NO. OF TIME STEPS
-NIT  = 1e4			                                      # TIME INTERVAL FOR SVAING THE DATA
+NIT  = 1e4			                          # TIME INTERVAL FOR SAVING THE DATA
 
 """ ****************************************** RESTART DATA FILES ************************************************** """
 
@@ -792,16 +792,15 @@ NRestart = 1170000
 """ ***************************************** PDE SOLVER PARAMETERS ************************************************ """
 
 # NON DIMENSIONAL PARAMTERS OF THE PDE
-Da     = 1e3             						 												 # DAMKOHLER NUMBER
-PHI    = 0.1					   						     										 # RATIO OF Da TO PECLET NUMBER
+Da     = 1e3            			             # DAMKOHLER NUMBER
+PHI    = 0.1					   	     # RATIO OF Da TO PECLET NUMBER
 eps    = 3e-2                                                # INVERSE OF ACTIVATION ENERGY
 Q      = 1.00                                                # NON-DIMENSIONAL REACTION HEAT
-alpha  = 1e-3                                                # NON-DIMENSIONAL NATURAL CONVECTION COEFFICENT
+alpha  = 1e-3                                                # NON-DIMENSIONAL NATURAL CONVECTION COEFFICIENT
 kap    = 1e-1                                                # DIFFUSION PARAMETER
 Upc    = 1.0                                                 # NON-DIMENSIONAL PHASE CHANGE TEMPERATURE
 UFlame = 31.0                                                # NON-DIMENSIONAL TEMPERATURE AT FLAME SOURCE
-
-CLAD   = 0.80  											 											   # LOCALIZED ARTIFICIAL DIFFUSION COEFFCIENT
+CLAD   = 0.80  						     # LOCALIZED ARTIFICIAL DIFFUSION COEFFICIENT
 
 """ ************************************ FUEL DISTRIBUTION PARAMETERS ********************************************** """
 
@@ -840,7 +839,7 @@ else:
 	U    = PATCH_FLAME_LOCATION (Nx, Ny, xmin, xmax, ymin, ymax, Xmin, Xmax, Ymin, Ymax, UFlame)
 
 	# WIND TOPOLOGY
-	Vmag    = 1.0                                           		# VELOCITY MAGNITUDE
+	Vmag    = 1.0                                           	# VELOCITY MAGNITUDE
 	AoA     = 45.0
 	#Vx, Vy = FREESTREAM_VELOCITY (Nx, Ny, Vmag, AoA)             	# UNIFORM FLOW
 
@@ -884,7 +883,7 @@ for i in range (Nt - NRestart):
 	print ("POSSIBLE MAX TEMP = ", Umax)
 	print ("AVERAGE FUEL      = ", np.mean (beta))
 
-	# WRITE THE TMPERATURE AND BETA DATA
+	# WRITE THE TEMPERATURE AND BETA DATA
 	if i % NIT == 0:
 		WRITE_DATA_H5PY (i + NRestart, beta, Vx, Vy, U)
 		print ("*"*65)
