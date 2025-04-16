@@ -10,7 +10,7 @@ Wildfire behavior results from intricate interactions among wind, terrain, and f
 
 #### Key Contributions
 
-- **Enhanced Non-Dimensionalization:**  
+- **Revised Non-Dimensionalization:**  
   Introduces a revised wildfire model incorporating three characteristic time scales—convection, diffusion, and reaction—leading to the identification of two key non-dimensional numbers: the Damköhler number and a newly defined number, $\Phi$, representing the ratio of Damköhler to Péclet number. This contrasts with conventional approaches that rely on a single temporal scale.
 
 - **State-Neutral Curve Identification:**  
