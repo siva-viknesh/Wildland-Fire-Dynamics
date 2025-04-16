@@ -36,14 +36,6 @@ Wildfire behavior results from intricate interactions among wind, terrain, and f
 
 ### 👥 Authors & Affiliations
 
-- **Siva Viknesh**, **Rob Stoll**, **Amirhossein Arzani**  
-  Department of Mechanical Engineering, University of Utah  
-  Scientific Computing & Imaging Institute, University of Utah
-
-- **Ali Tohidi**  
-  Department of Mechanical Engineering, San José State University  
-  Wildfire Interdisciplinary Research Center, San José State University  
-  Department of Fire Protection Engineering, University of Maryland
-
-- **Fatemeh Afghah**  
-  Department of Electrical and Computer Engineering, Clemson University
+- **Siva Viknesh**, **Rob Stoll**, **Amirhossein Arzani** – University of Utah  
+- **Ali Tohidi** – University of Maryland  
+- **Fatemeh Afghah** – Clemson University
