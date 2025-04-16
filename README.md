@@ -2,35 +2,48 @@
 
 ![Model](https://github.com/siva-viknesh/Wildland_Fire_Dynamics/blob/main/0_Scaling_Analysis/Scaling_analysis.jpg)
 
-This repository contains a GPU-enabled wildfire transport solver developed to investigate how wind flow topology influences wildfire propagation. The project adopts a fundamental reactive flow dynamics perspective and introduces a physics-informed framework based on a nonlinear convection-diffusion-reaction (CDR) model.
+This repository contains a GPU-enabled wildfire transport solver developed to investigate how wind flow topology influences wildfire propagation. The project adopts a fundamental reactive flow dynamics perspective, based on a nonlinear convection-diffusion-reaction (CDR) PDE model.
 
 ### 🔥 Project Overview
 
 Wildfire behavior results from intricate interactions among wind, terrain, and fuel, often producing highly nonlinear and transient dynamics. This study aims to uncover the influence of wind velocity topology—particularly the role of flow manifolds—on wildfire transport and spread.
 
-Key contributions include:
+#### Key Contributions
 
-- **Revised Non-Dimensionalization:**  
-  A new scaling approach incorporating three characteristic time scales, leading to the derivation of two critical non-dimensional parameters. These provide improved insights over conventional single-time-scale models.
+- **Enhanced Non-Dimensionalization:**  
+  Introduces a revised wildfire model incorporating three characteristic time scales—convection, diffusion, and reaction—leading to the identification of two key non-dimensional numbers: the Damköhler number and a newly defined number, $\Phi$, representing the ratio of Damköhler to Péclet number. This contrasts with conventional approaches that rely on a single temporal scale.
 
 - **State-Neutral Curve Identification:**  
-  Analytical determination of parameter thresholds where initial fire either dies out or persists, offering a predictive boundary in parameter space.
+  Analytically determines the critical conditions under which initial wildfires extinguish or propagate, culminating in a predictive *state-neutral curve* defined in the space of the two identified non-dimensional numbers.
 
 - **Wildfire Solver Development:**  
-  A finite difference solver was implemented using upwind compact schemes and implicit-explicit Runge-Kutta methods to model wildfire transport over two-dimensional domains.
+  A GPU-enabled finite-difference solver in Python was developed using upwind compact schemes and implicit-explicit Runge-Kutta (IMEX-RK) methods to solve the wildfire transport PDE system.
 
-- **Flow Topology Influence (Steady Wind):**  
-  Examined wildfire propagation under steady saddle-point wind fields, emphasizing the alignment between firefront evolution and the stable/unstable manifolds of the velocity field.
+- **Steady Wind Topology Analysis:**  
+  Investigates wildfire behavior under steady wind conditions modeled by saddle-type fixed-point flows, with a focus on how firefronts align with the stable and unstable manifolds of the velocity field.
 
-- **Transient Wind Topology (Double-Gyre):**  
-  Investigated the impact of unsteady, time-periodic wind structures using a benchmark double-gyre flow. The wildfire response was quantified using a transfer function-based approach across various Strouhal numbers and amplitudes.
+- **Unsteady Wind Influence (Double-Gyre):**  
+  Analyzes wildfire spread under unsteady, time-periodic wind fields (double-gyre), characterizing the wildfire response through a transfer function (Bode plot) analysis across varying Strouhal numbers and wind oscillation amplitudes.
 
 - **Lagrangian Coherent Structures (LCS):**  
-  To assess the correspondence between coherent structures and firefront evolution, LCS fields were computed using the [TBarrier](https://github.com/haller-group/TBarrier) MATLAB toolbox by the Haller Group. The alignment between transport barriers and wildfire fronts was explored under both steady and unsteady wind conditions.
+   To assess the correspondence between coherent structures and firefront evolution, LCS fields were computed using the [TBarrier](https://github.com/haller-group/TBarrier) toolbox by the Haller ETH Group.
 
 ### 🚀 Code Highlights
 
 - GPU-accelerated solver for efficient wildfire transport simulations.
-- Supports both steady and time-dependent wind velocity fields.
-- Modular design for integrating custom wind models and parameter sets.
+- Supports both steady and unsteady/custom wind fields.
 - Post-processing utilities to evaluate front evolution and firefront–manifold interactions.
+
+### 👥 Authors & Affiliations
+
+- **Siva Viknesh**, **Rob Stoll**, **Amirhossein Arzani**  
+  Department of Mechanical Engineering, University of Utah  
+  Scientific Computing & Imaging Institute, University of Utah
+
+- **Ali Tohidi**  
+  Department of Mechanical Engineering, San José State University  
+  Wildfire Interdisciplinary Research Center, San José State University  
+  Department of Fire Protection Engineering, University of Maryland
+
+- **Fatemeh Afghah**  
+  Department of Electrical and Computer Engineering, Clemson University
