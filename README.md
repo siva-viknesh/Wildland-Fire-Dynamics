@@ -1,7 +1,5 @@
 ## Role of Flow Topology in Wind-Driven Wildfire Propagation
 
-![Model](https://github.com/siva-viknesh/Wildland_Fire_Dynamics/blob/main/0_Scaling_Analysis/Scaling_analysis.jpg)
-
 This repository contains a GPU-enabled wildfire transport solver developed to investigate how wind flow topology influences wildfire propagation. The project adopts a fundamental reactive flow dynamics perspective, based on a nonlinear convection-diffusion-reaction (CDR) PDE model.
 
 ### 🔥 Project Overview
