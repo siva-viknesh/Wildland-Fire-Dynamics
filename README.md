@@ -37,3 +37,25 @@ Wildfire behavior results from intricate interactions among wind, terrain, and f
 - **Siva Viknesh**, **Rob Stoll**, **Amirhossein Arzani** – University of Utah  
 - **Ali Tohidi** – University of Maryland  
 - **Fatemeh Afghah** – Clemson University
+
+---
+
+### 📄 Citation
+
+If you use this code or find this work helpful, please cite:
+
+Viknesh, S., Tohidi, A., Afghah, F., Stoll, R., & Arzani, A. (2025). Role of flow topology in wind-driven wildfire propagation. *Physics of Fluids*, 37(7), 076608. https://doi.org/10.1063/5.0268416
+
+```bibtex
+@article{viknesh_wildfire_2025,
+  author  = {Viknesh, Siva and Tohidi, Ali and Afghah, Fatemeh and Stoll, Rob and Arzani, Amirhossein},
+  title   = {Role of flow topology in wind-driven wildfire propagation},
+  journal = {Physics of Fluids},
+  volume  = {37},
+  number  = {7},
+  pages   = {076608},
+  year    = {2025},
+  doi     = {10.1063/5.0268416},
+  url     = {https://doi.org/10.1063/5.0268416}
+}
+```
